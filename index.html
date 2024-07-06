@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowy Slideshow</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevents scrolling */
+            background-image: url('snow-background.avif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 1000%; /* Full viewport width */
+            height: 100%; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px; /* Adjust margin as needed */
+            overflow: hidden; /* Hide overflowing content */
+            border-radius: 10px;
+            z-index: 2; /* Ensure slides are above canvas */
+        }
+
+        .slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%; /* Adjust width of the slide */
+    height: 50%; /* Let the height adjust based on content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 3; /* Ensure text content is above canvas */
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    position: relative; /* Adjust to move content vertically */
+    z-index: 3; /* Ensure content is above canvas */
+}
+
+.slide-image {
+    max-width: 60%; /* Adjust maximum width as needed */
+    max-height: 70%; /* Adjust maximum height as needed */
+    width: 70%; /* Ensure image width adjusts proportionally */
+    left: 70%;
+    height: 70%; /* Ensure image height adjusts proportionally */
+    margin-top: 20px; /* Adjust top margin to separate from text */
+}
+
+
+        .prev-button,
+        .next-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 4; /* Ensure buttons are above slides */
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
+
+        .prev-button:hover,
+        .next-button:hover {
+            background-color: #45a049;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            z-index: 3; /* Ensure heading is above canvas */
+            position: relative; /* Adjust position */
+            text-align: center; /* Center align text */
+        }
+
+        .game-buttons {
+            position: absolute;
+            top: 30%;
+            bottom: 20px; /* Adjust the bottom position as needed */
+            left: 52%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 800%;
+            max-width: 400px; /* Adjust maximum width */
+            display: flex;
+            
+            z-index: 3; /* Ensure buttons are above canvas */
+        }
+
+        .game-buttons a {
+    display: block;
+    width: 130px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    background-size: cover;
+    cursor: pointer;
+    padding: 30px; /* Adjust padding as needed */
+    
+    top: 0; /* Adjust top percentage as needed */
+    right: 0; /* Adjust right positioning */
+}
+
+     
+.game-buttons .thief {
+            left: 0; /* Position thief link to the left */
+        }
+        .game-buttons .spy {
+            right: 0; /* Position spy link to the right */
+        }
+        .game-buttons img {
+    width: 400px; /* Allow the image to scale proportionally */
+    height: 250px; /* Maintain aspect ratio */
+   
+}
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            background-image: url('snow.avif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1; /* Ensure canvas is behind slides */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <div class="slide-content">
+                <h2>Welcome to Ihechineme Thief and Spy Game!</h2>
+                <h2>All throughout life, humans have to choose a path</h2>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Be it Yin/Yang</h2>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                
+                <h2>Embark on a journey where your decision shapes your destiny</h2>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Choose between the path of Yin, embracing tranquility and balance, or the path of Yang, embracing action and change.</h2>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Your choices will unfold a tale of harmony or conflict, guiding you through challenges that test your inner nature.</h2>
+                <p>Discover the power within, as each path reveals its own rewards and consequences</p>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Pay attention to the people at the buttom of the screen as they will guide you on your journey</h2>
+                <p>Click a side in the yin/yang circle</p>
+            </div>
+            <img src="yin-yang.png" alt="Combined Yin-Yang Image" class="slide-image">
+            <div class="game-buttons">
+                <a class="spy" href="thief.html"></a>
+                <a class="thief" href="spy.html"></a>
+            </div>
+        </div>
+    </div>
+
+    <button class="prev-button" onclick="changeSlide(-1)">&#10094; Prev</button>
+    <button class="next-button" onclick="changeSlide(1)">Next &#10095;</button>
+
+    <p>Note: Pay attention to the characters at the bottom; they will guide you in your journey.</p>
+
+    <script>
+        (function() {
+            var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+            function(callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+            window.requestAnimationFrame = requestAnimationFrame;
+        })();
+
+        var flakes = [],
+            canvas = document.getElementById("canvas"),
+            ctx = canvas.getContext("2d"),
+            flakeCount = 400,
+            mX = -100,
+            mY = -100;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function snow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < flakeCount; i++) {
+                var flake = flakes[i],
+                    x = mX,
+                    y = mY,
+                    minDist = 150,
+                    x2 = flake.x,
+                    y2 = flake.y;
+
+                var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
+                    dx = x2 - x,
+                    dy = y2 - y;
+
+                if (dist < minDist) {
+                    var force = minDist / (dist * dist),
+                        xcomp = (x - x2) / dist,
+                        ycomp = (y - y2) / dist,
+                        deltaV = force / 2;
+
+                    flake.velX -= deltaV * xcomp;
+                    flake.velY -= deltaV * ycomp;
+
+                } else {
+                    flake.velX *= .98;
+                    if (flake.velY <= flake.speed) {
+                        flake.velY = flake.speed
+                    }
+                    flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
+                }
+
+                ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
+                flake.y += flake.velY;
+                flake.x += flake.velX;
+                    
+                if (flake.y >= canvas.height || flake.y <= 0) {
+                    reset(flake);
+                }
+
+                if (flake.x >= canvas.width || flake.x <= 0) {
+                    reset(flake);
+                }
+
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            requestAnimationFrame(snow);
+        }
+
+        function reset(flake) {
+            flake.x = Math.floor(Math.random() * canvas.width);
+            flake.y = 0;
+            flake.size = (Math.random() * 3) + 2;
+            flake.speed = (Math.random() * 1) + 0.5;
+            flake.velY = flake.speed;
+            flake.velX = 0;
+            flake.opacity = (Math.random() * 0.5) + 0.3;
+        }
+
+        function init() {
+            for (var i = 0; i < flakeCount; i++) {
+                var x = Math.floor(Math.random() * canvas.width),
+                    y = Math.floor(Math.random() * canvas.height),
+                    size = (Math.random() * 3) + 2,
+                    speed = (Math.random() * 1) + 0.5,
+                    opacity = (Math.random() * 0.5) + 0.3;
+
+                flakes.push({
+                    speed: speed,
+                    velY: speed,
+                    velX: 0,
+                    x: x,
+                    y: y,
+                    size: size,
+                    stepSize: (Math.random()) / 30,
+                    step: 0,
+                    opacity: opacity
+                });
+            }
+
+            snow();
+        }
+
+        canvas.addEventListener("mousemove", function(e) {
+            mX = e.clientX,
+            mY = e.clientY;
+        });
+
+        window.addEventListener("resize",function(){
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        init();
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+    </script>
+</body>
+</html>

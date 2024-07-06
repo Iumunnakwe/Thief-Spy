@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spy Game</title>
+    <link rel="stylesheet" href="thief_styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="textbox-container" id="textboxContainer">
+        <input type="text" class="digit-input" id="digitInput1" maxlength="1">
+        <input type="text" class="digit-input" id="digitInput2" maxlength="1">
+        <input type="text" class="digit-input" id="digitInput3" maxlength="1">
+        <input type="text" class="digit-input" id="digitInput4" maxlength="1">
+        <input type="text" class="digit-input" id="digitInput5" maxlength="1">
+        <button id="checkButton">Check</button>
+        <p id="resultMessage"></p> <!-- Result message container -->
+    </div>
+
+    <!-- Character display with onclick event at the bottom -->
+    <div class="character" onclick="changeDialogue()">
+        <img src="thief.png" alt="Character Portrait">
+        <div class="character-info">
+            <h2 id="characterName">Silent Ghost</h2>
+            <p id="characterDialogue">Click anywhere to change dialogue.</p>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <svg id="timerSVG" width="100" height="100" style="position: fixed; top: 20px; right: 20px;">
+        <circle id="timerCircle" r="40" cx="50" cy="50" fill="transparent" stroke="#3498db" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="251"></circle>
+        <text id="timerText" x="50" y="60" text-anchor="middle" font-size="20" fill="#3498db">60</text>
+    </svg>
+    
+
+    <!-- GIF Image Container -->
+    <div id="gifContainer">
+        <img id="gifImage" src="busted.gif" style="display: none;">
+        <img id="gifImageWin" src="win.gif" style="display: none;">
+        <img id="gifImageOpen" src="open.gif" style="display: none;">
+        <p id="additionalWords" style="display: none;"></p>
+    </div>
+
+    <div id="scoreboard">
+        <form style="display: inline-block;">
+            <button type="submit">Restart</button>
+        </form>
+        <button onclick="window.location.href = 'index.html';" style="display: inline-block; margin-left: 10px;">Home Page</button>
+    </div>
+
+    <script src="thief_script.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>
