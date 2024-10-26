@@ -151,6 +151,62 @@
             background-size: cover;
             z-index: 1; /* Ensure canvas is behind slides */
         }
+
+        @media (max-width: 768px) {
+    .slideshow-container {
+        height: 50vh; /* Adjust height for smaller screens */
+        justify-content: center;
+        align-items: center;
+        margin-left: 40px; /* Adjust this value to move right */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .game-buttons {
+        bottom: 10px; /* Adjust positioning for buttons */
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .game-buttons a {
+        width: auto; /* Adjust width for smaller buttons */
+        height: 10px; /* Reduce height for smaller buttons */
+        margin: 5px 0; /* Space between buttons */
+    }
+
+    .prev-button, .next-button {
+        padding: 8px 16px; /* Smaller button size for mobile */
+    }
+
+    .game-buttons .thief {
+        width: 2vw;
+        position: absolute; /* Make sure position is absolute */
+        left: 2px; /* Adjust this value to move it further right */
+        top: 90px; /* Adjust this value to move it down */
+      /*  background-image: url('spy.png');*/
+    }
+    .game-buttons .spy {
+    width: 2vw;
+   /* background-image: url('thief.png'); /* Somehow thief and spy images/ code got mixed up .__. */
+    position: absolute; /* Make sure position is absolute */
+    left: 65px; /* Adjust this value to move it further right */
+    top: 100px; /* Adjust this value to move it down */
+    }
+
+    .game-buttons  {
+        left: 100; /* Position spy link to the right */
+        height: 25vh;
+        width: 25vw;
+    }
+
+    .game-buttons img {
+        width: 40px; /* Adjust image size for buttons */
+        height: 40px; /* Maintain aspect ratio */
+    }
+}
+
+
     </style>
 </head>
 <body>
