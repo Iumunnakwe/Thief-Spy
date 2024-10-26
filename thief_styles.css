@@ -235,3 +235,52 @@ circle {
   font-family: Arial, sans-serif;
   fill: #34db4d;
 }
+
+@media (max-width: 768px) {
+  body {
+    background-image: url('background.jpg');
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    /* other styles */
+  }
+  .digit-input {
+      width: 20px; /* Smaller width for mobile */
+      font-size: 14px; /* Smaller font size */
+  }
+
+  .textbox-container {
+      width: 90%; /* Full width on mobile */
+      margin: 10px; /* Less margin on mobile */
+      padding: 15px; /* Less padding */
+  }
+
+  button {
+      font-size: 14px; /* Smaller button font */
+      padding: 8px 15px; /* Smaller padding */
+  }
+  .character {
+    width: 100vw;
+  }
+
+
+  .character img {
+      width: 80px; /* Smaller character image */
+  }
+  #gifImage, #gifImageWin, #gifImageOpen {
+    width: 100vw; /* Adjusts the width of GIF images */
+    position: absolute; /* Use absolute positioning */
+    top: 180px; /* Increase this value to move it down */
+    left: 50%; /* Centers the GIFs horizontally */
+    transform: translateX(-50%); /* Adjusts for the width to keep it centered */
+}
+
+  #additionalWords {
+      font-size: 16px; /* Smaller text for mobile */
+  }
+
+  #scoreboard {
+      font-size: 18px; /* Smaller scoreboard font */
+  }
+}
