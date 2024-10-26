@@ -129,11 +129,23 @@
 
      
 .game-buttons .thief {
-            left: 0; /* Position thief link to the left */
-        }
-        .game-buttons .spy {
-            right: 0; /* Position spy link to the right */
-        }
+        height: 7vh;
+        width: 3vw;
+        position: fixed; /* Make sure position is absolute */
+        left: 145px; /* Adjust this value to move it further right */
+        top: 170px; /* Adjust this value to move it down */
+        background-image: url('yang.png');
+        
+    }
+    .game-buttons .spy {
+        height: 7vh;
+
+    width: 3vw;
+    background-image: url('yin.png'); /* Somehow thief and spy images/ code got mixed up .__. */
+    position: fixed; /* Make sure position is absolute */
+    left: 170px; /* Adjust this value to move it further right */
+    top: 170px; /* Adjust this value to move it down */
+    }
         .game-buttons img {
     width: 400px; /* Allow the image to scale proportionally */
     height: 250px; /* Maintain aspect ratio */
@@ -182,20 +194,20 @@
     }
 
     .game-buttons .thief {
-        width: 2vw;
-        position: absolute; /* Make sure position is absolute */
+        width: 6vw;
+        height: 5vh;
+        position: fixed; /* Make sure position is absolute */
         left: -10px; /* Adjust this value to move it further right */
         top: 290px; /* Adjust this value to move it down */
         background-image: url('yang.png');
         
     }
     .game-buttons .spy {
-        height: 3vh;
-
-    width: 2vw;
+        width: 5vw;
+        height: 5vh;
     background-image: url('yin.png'); /* Somehow thief and spy images/ code got mixed up .__. */
-    position: absolute; /* Make sure position is absolute */
-    left: 50px; /* Adjust this value to move it further right */
+    position: fixed; /* Make sure position is absolute */
+    left: 20px; /* Adjust this value to move it further right */
     top: 290px; /* Adjust this value to move it down */
     }
 
